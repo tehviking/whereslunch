@@ -28,14 +28,15 @@
 
 <% if user_signed_in? %>
 	<div id="vote_form"> 
-		<% form_tag(restaurant_votes_path(@restaurant), :remote => true) %>
-		<%= submit_tag 'Vote for this feedback' %> 
+		<% form_tag(restaurant_votes_path(@restaurant), :remote => true) do %>
+		<%= submit_tag 'Vote for this restaurant' %> 
+		<% end %>
 	</div>
 <% else %>
 	<p>
 		<em>
 			<%= link_to 'Please log in', new_user_session_path %>
-			to vote for this feedback!
+			to vote for this restaurant!
 		</em>
 	</p>
 <% end %>

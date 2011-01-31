@@ -12,7 +12,7 @@ class Vote < ActiveRecord::Base
   end
   
    def is_votable_by_user
-     errors.add("User vote limit reached.") unless self.vote_count_by_user < VOTE_LIMIT
+     errors.add(:base, "User vote limit reached.") unless self.vote_count_by_user < VOTE_LIMIT
    end
   
 end
