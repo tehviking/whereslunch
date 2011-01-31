@@ -1,0 +1,19 @@
+<% if @user.email %>
+	<h2>Comments submitted by <%= @user.email %></h2> 
+<% else %>
+	<h2>User's comments submitted</h2>
+<% end %>
+
+<div id="comments_submitted">
+	<%= render :partial => @restaurants_submitted %> 
+</div>
+
+<% if @user.email %>
+	<h2>Comments voted on by <%= @user.email %></h2> 
+<% else %>
+	<h2>Comments voted for by user</h2>
+<% end %>
+
+<div id="comments_voted_on">
+	<%= render :partial => @restaurants_voted_on %> 
+</div>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Where's Lunch</title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+	<div id="content"> 
+		<div id="login_logout">
+			<% if current_user.email != "" %>
+          		<li>Signed in as <strong><%= current_user.email %></strong></li>
+      		<% else %>
+      			<li>Signed in.</li>
+  			<% end %>   
+				Not you?
+			<em><%= link_to "Sign Out", destroy_user_session_path %></em>
+		<% else %>
+			<em>Not signed in.</em>
+			<%= link_to_rpx "Sign in", user_session_url %>
+		<% end %>
+		</div>
+		
+		<h1><%= link_to "Feedback", comments_path %></h1> 
+		
+	<p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+<%= yield %>
+
+<%= javascript_include_rpx(user_session_url) %>
+</body>
+</html>

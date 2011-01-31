@@ -1,0 +1,71 @@
+<span id="errors">
+  <%= error_messages_for "vote" %>
+</span>
+
+<h2>
+  <span id="vote_score"> 
+	<%= @restaurant.votes.size %> votes
+  </span>
+  <%= @restaurant.title %>
+</h2>
+<p>
+  <h3><%= @restaurant.body %></h3>
+  
+<% if @restaurant.user.email %>
+<p class="submitted_by"> 
+  <em> 
+	Submitted by: 
+  	<span><%= link_to @restaurant.user.email, @restaurant.user %></span>
+  </em>
+</p>
+<% end %>
+
+<% if user_signed_in? %>
+	<div id="vote_form"> 
+		<% form_remote_tag :url => restaurant_votes_path(@restaurant) do %>
+			<%= submit_tag 'Vote for this feedback' %> 
+		<% end %>
+	</div>
+<% else %>
+	<p>
+		<em>
+			<%= link_to 'Please log in', new_user_session_path %>
+			to vote for this feedback!
+		</em>
+	</p>
+<% end %>
+<ul id="vote_history"> 
+  <% if @restaurant.votes.empty? %>
+	<em>No votes yet!</em> 
+  <% else %>
+	<%= render :partial => 'votes/vote', 
+			   :collection => @restaurant.votes.latest %>
+  <% end %>
+</ul>
+
+<h2>Discuss this Feedback</h2>
+	<% if @restaurant.comments %>  
+		<% for comment in @restaurant.comments %>
+			<em><%= comment.user.email %> said:</em><br />
+		<h3><%= comment.body %></h3>
+		<hr />
+		<% end %>
+	<% else %>
+		No replies yet! 
+	<% end %>
+
+<% if current_user %>
+	<%= form_tag :action => "add_comment", :id => @restaurant %>
+	   <%= text_area "comment", "body" %><br />
+	   <%= submit_tag "Submit" %>
+	</form>
+<% else %>
+	<em>
+		<%= link_to 'Log in', new_user_session_path %>
+		to reply to this feedback!
+	</em>
+<% end %>
+
+<br /><br />
+<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> 
+<%= link_to 'Back', restaurants_path %>

@@ -1,0 +1,18 @@
+<h2> 
+	<%= "The top #{ pluralize(@popular.size, 'restaurant') }" %>
+</h2> 
+
+
+<table id="mytable" cellspacing="0" summary="All feedback">
+  <tr>
+	<th scope="col" abbr="Votes">Votes</th>
+    <th scope="col" abbr="Title">Title</th>
+    <th scope="col" abbr="Comment">Comment</th>
+  </tr>
+<%= render :partial => 'restaurant', :collection => @popular %>
+</table>
+
+<br />
+
+<%= link_to 'Submit your feedback', new_restaurant_path %> | 
+<%= link_to 'Top feedback', '/restaurants/popular' %>
