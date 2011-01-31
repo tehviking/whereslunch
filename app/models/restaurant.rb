@@ -1,6 +1,6 @@
 class Restaurant < ActiveRecord::Base
   after_create :create_initial_vote
-  validates_presence_of :title, :body
+  validates_presence_of :name, :description
   belongs_to :user
   has_many :comments
   has_many :votes do

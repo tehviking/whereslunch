@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  before_filter :login_required, :only => [ :new, :create ]
+  before_filter :authenticate_user!, :only => [ :new, :create ]
   
   def index
     @restaurants = Restaurant.all

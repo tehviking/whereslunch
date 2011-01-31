@@ -1,15 +1,21 @@
 <span id="errors">
-  <%= error_messages_for "vote" %>
+	<% if @restaurant.errors.any? %>
+	  <ul>
+	    <% @restaurant.errors.full_messages.each do |msg| %>
+	      <li><%= msg %></li>
+	    <% end %>
+	  </ul>
+	<% end %>
 </span>
 
 <h2>
   <span id="vote_score"> 
 	<%= @restaurant.votes.size %> votes
   </span>
-  <%= @restaurant.title %>
+  <%= @restaurant.name %>
 </h2>
 <p>
-  <h3><%= @restaurant.body %></h3>
+  <h3><%= @restaurant.description %></h3>
   
 <% if @restaurant.user.email %>
 <p class="submitted_by"> 
@@ -22,9 +28,8 @@
 
 <% if user_signed_in? %>
 	<div id="vote_form"> 
-		<% form_remote_tag :url => restaurant_votes_path(@restaurant) do %>
-			<%= submit_tag 'Vote for this feedback' %> 
-		<% end %>
+		<% form_tag(restaurant_votes_path(@restaurant), :remote => true) %>
+		<%= submit_tag 'Vote for this feedback' %> 
 	</div>
 <% else %>
 	<p>
@@ -43,7 +48,7 @@
   <% end %>
 </ul>
 
-<h2>Discuss this Feedback</h2>
+<h2>Discuss this Restaurant</h2>
 	<% if @restaurant.comments %>  
 		<% for comment in @restaurant.comments %>
 			<em><%= comment.user.email %> said:</em><br />

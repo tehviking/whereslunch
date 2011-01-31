@@ -1,14 +1,24 @@
-<%= error_messages_for 'restaurant' %>
+<% if @restaurant.errors.any? %>
+  <ul>
+    <% @restaurant.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
 <h1>Update this restaurant's info:</h1>
 
-<% form_for(@restaurant) do |f| %>
+<%= form_for(@restaurant) do |f| %>
   <p>
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
   </p>
   <p>
-    <%= f.label :body %><br />restaurant
-    <%= f.text_area :body %>
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.label :link %><br />
+    <%= f.text_area :link %>
   </p>
   <p>
     <%= f.submit 'Update' %>

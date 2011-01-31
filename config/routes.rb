@@ -1,6 +1,7 @@
 Lunch::Application.routes.draw do
   devise_for :users
-  match 'comments/popular'
+  match 'restaurants/popular'
+  match 'restaurants/add_comment'
    
   resources :restaurants do
     resources :votes

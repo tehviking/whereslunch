@@ -9,6 +9,7 @@
 <body>
 	<div id="content"> 
 		<div id="login_logout">
+		<% if user_signed_in? %>
 			<% if current_user.email != "" %>
           		<li>Signed in as <strong><%= current_user.email %></strong></li>
       		<% else %>
@@ -22,7 +23,7 @@
 		<% end %>
 		</div>
 		
-		<h1><%= link_to "Feedback", comments_path %></h1> 
+		<h1><%= link_to "Restaurants", restaurants_path %></h1> 
 		
 	<p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>

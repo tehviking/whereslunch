@@ -8,7 +8,7 @@ class Vote < ActiveRecord::Base
   def vote_count_by_user
 # Clear Rails 2 => Rails 3 upgrade example here, for posterity
 #    Vote.count("user_id = ? AND comment_id = ?", self.user.id, self.comment.id])
-    Vote.where(:user_id => self.user.id, :comment_id => self.comment.id).count
+    Vote.where(:user_id => self.user.id, :restaurant_id => self.restaurant.id).count
   end
   
    def is_votable_by_user

@@ -13,4 +13,15 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
+  
+  def decrement_votes_left
+    self.votes_left -= 1
+    self.save
+  end
+
+  protected  
+    def fill_votes_left
+      self.votes_left = 10
+      self.save
+    end
 end
