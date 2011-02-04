@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110131095627) do
+ActiveRecord::Schema.define(:version => 20110204162930) do
 
   create_table "comments", :force => true do |t|
     t.integer  "restaurant_id"
@@ -25,10 +25,11 @@ ActiveRecord::Schema.define(:version => 20110131095627) do
     t.string   "description"
     t.string   "link"
     t.integer  "user_id"
-    t.integer  "votes_count", :default => 0
+    t.integer  "votes_count",  :default => 0
     t.string   "last_visit"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "neighborhood"
   end
 
   create_table "users", :force => true do |t|

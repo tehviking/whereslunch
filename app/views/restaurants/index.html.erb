@@ -3,11 +3,12 @@
 </h2> 
 
 
-<table id="mytable" cellspacing="0" summary="All feedback">
+<table id="mytable" cellspacing="0" summary="All Restaurants">
   <tr>
 	<th scope="col" abbr="Votes">Votes</th>
     <th scope="col" abbr="Name">Name</th>
     <th scope="col" abbr="Description">Description</th>
+    <th scope="col" abbr="Neighborhood">Neighborhood</th>
     <th scope="col" abbr="Link">Link</th>
   </tr>
 <%= render :partial => 'restaurant', :collection => @restaurants %>
