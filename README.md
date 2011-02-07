@@ -1,3 +1,5 @@
+Note: this site is live at <http://whereslunch.heroku.com>.
+
 This is a two-part assignment in conducting design-related code review.
 
 For the first part, you should come up with a list of notes and questions for the reviewers of your project.  These questions will help the students who review your project give you the feedback you need.  You can add these to the notes section on your submission, so that they are displayed in the same place as the comments.
