@@ -10,7 +10,7 @@ class Restaurant < ActiveRecord::Base
   end
 
   def self.popular
-    order('votes_count DESC').where('votes_count > 5').limit(10)
+    order('votes_count DESC').where('votes_count > 2').limit(10)
   end
 
   protected
