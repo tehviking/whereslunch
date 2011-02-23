@@ -14,14 +14,20 @@ body {
 }
 
 #vote_history {
-	padding: 5px; 
+	padding: 10px; 
+	padding-bottom: 0px;
 	margin: 0; 
 	list-style: none; 
 	border: 3px solid #ccc; 
 	background-color: #eee; 
 	float: right;
 	color: #999; 
-	font-size: smaller;
+	font-size: 12px;
+}
+
+.bolder {
+  font-weight: bold;
+  font-size: 14px;
 }
 
 #notification { 
@@ -79,7 +85,7 @@ body {
 }
 
 body {
-	font: normal 11px auto "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	font: normal 12px auto "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
 	color: #4f6b72;
 	background: #E6EAE9;
 }
@@ -110,7 +116,7 @@ th {
 	text-transform: uppercase;
 	text-align: left;
 	padding: 6px 6px 6px 12px;
-	background: #CAE8EA url(images/bg_header.jpg) no-repeat;
+	background: #CAE8EA url('/images/bg_header.jpg') no-repeat;
 }
 
 th.nobg {
@@ -144,14 +150,14 @@ td.big {
 th.spec {
 	border-left: 1px solid #C1DAD7;
 	border-top: 0;
-	background: #fff url(../images/bullet1.gif) no-repeat;
+	background: #fff url('/images/bullet1.gif') no-repeat;
 	font: bold 10px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
 }
 
 th.specalt {
 	border-left: 1px solid #C1DAD7;
 	border-top: 0;
-	background: #f5fafa url(../images/bullet2.gif) no-repeat;
+	background: #f5fafa url('/images/bullet2.gif') no-repeat;
 	font: bold 10px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
 	color: #797268;
 }

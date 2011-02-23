@@ -10,7 +10,15 @@ class Restaurant < ActiveRecord::Base
   end
 
   def self.popular
-    order('votes_count DESC').where('votes_count > 2').limit(10)
+    order('votes_count DESC').where('votes_count > 5').limit(10)
+  end
+  
+  def voters
+    voters = []
+    self.votes.each do |vote|
+      voters << User.find(vote.id)
+    end
+    return voters
   end
 
   protected

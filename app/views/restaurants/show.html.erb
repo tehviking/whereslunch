@@ -38,15 +38,19 @@
 			<%= link_to 'Please log in', new_user_session_path %>
 			to vote for this restaurant!
 		</em>
-	</p>
+	</p> <br />
 <% end %>
-<ul id="vote_history"> 
-  <% if @restaurant.votes.empty? %>
-	<em>No votes yet!</em> 
-  <% else %>
-	<%= render :partial => 'votes/vote', 
-			   :collection => @restaurant.votes.latest %>
-  <% end %>
+<ul id="vote_history">
+  <span class="bolder">Who voted for this restaurant?</span> 
+  <p>
+    <% if @restaurant.votes.empty? %>
+  	<em>No votes yet!</em> 
+    <% else %>
+      <% @voters.each do |voter| %>
+        <li><%= voter.email %></li>
+  	  <% end %>
+    <% end %>
+  </p>
 </ul>
 
 <h2>Discuss this Restaurant</h2>
@@ -67,7 +71,7 @@
 	</form>
 <% else %>
 	<em>
-		<%= link_to 'Log in or sign up', new_user_session_path %>
+		<%= link_to 'Log in', new_user_session_path %>
 		to add a comment!
 	</em>
 <% end %>
