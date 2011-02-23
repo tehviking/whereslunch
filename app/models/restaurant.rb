@@ -13,11 +13,11 @@ class Restaurant < ActiveRecord::Base
     order('votes_count DESC').where('votes_count > 5').limit(10)
   end
   
-  def voters(restaurant_id)
+  def voters
     sql = ActiveRecord::Base.connection
     query = sql.execute("SELECT u.email FROM users u INNER JOIN 
                         votes v ON u.id = v.user_id inner join restaurants r 
-                        on v.restaurant_id = r.id where r.id = #{restaurant_id}")
+                        on v.restaurant_id = r.id where r.id = #{self.id}")
     emails = []
     query.each { |query| emails << query["email"] }
     emails

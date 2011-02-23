@@ -1,1 +1,5 @@
-<li><%= @voter.email %></li>
+<span class="bolder">Who voted for this restaurant?</span> 
+  <p>
+<% @restaurant.voters.each do |voter| %>
+  <li><%= voter %></li>
+<% end %>

@@ -10,13 +10,13 @@
 
 <h2>
   <span id="vote_score"> 
-	<%= @restaurant.votes.count %> votes
+	  <%= pluralize(@restaurant.votes.count, "vote") %> 
   </span>
   <%= @restaurant.name %>
 </h2>
 <p>
   <h3><%= @restaurant.description %></h3>
-  
+
 <% if @restaurant.user.email %>
 <p class="submitted_by"> 
   <em> 
@@ -41,14 +41,12 @@
 	</p> <br />
 <% end %>
 <ul id="vote_history">
-  <span class="bolder">Who voted for this restaurant?</span> 
-  <p>
     <% if @restaurant.votes.empty? %>
-  	<em>No votes yet!</em> 
+      <span class="bolder">Who voted for this restaurant?</span> 
+      <p>
+  	  <em>No votes yet!</em> 
     <% else %>
-      <% @voters.each do |voter| %>
-        <li><%= voter %></li>
-  	  <% end %>
+      <%= render :partial => 'votes/vote' %>
     <% end %>
   </p>
 </ul>

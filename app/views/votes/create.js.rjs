@@ -1,4 +1,3 @@
-page.replace_html 'vote_score', "Score: #{@restaurant.reload.votes.size}" 
+page.replace_html 'vote_score', "Score: #{@restaurant.reload.votes.count}" 
 page[:vote_score].visual_effect :highlight
-page[:vote_history].replace_html :partial => 'vote',
-            :collection => @restaurant.votes.latest
+page[:vote_history].replace_html :partial => 'vote'
