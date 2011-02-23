@@ -7,7 +7,7 @@ class RestaurantsController < ApplicationController
 
   def show
     @restaurant = Restaurant.find(params[:id])
-    @voters = @restaurant.voters
+    @voters = @restaurant.voters(params[:id])
   end
 
   def new

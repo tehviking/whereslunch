@@ -13,14 +13,16 @@ class Restaurant < ActiveRecord::Base
     order('votes_count DESC').where('votes_count > 5').limit(10)
   end
   
-  def voters
-    voters = []
-    self.votes.each do |vote|
-      voters << User.find(vote.id)
-    end
-    return voters
+  def voters(restaurant_id)
+    sql = ActiveRecord::Base.connection
+    query = sql.execute("SELECT u.email FROM users u INNER JOIN 
+                        votes v ON u.id = v.user_id inner join restaurants r 
+                        on v.restaurant_id = r.id where r.id = #{restaurant_id}")
+    emails = []
+    query.each { |query| emails << query["email"] }
+    emails
   end
-
+  
   protected
     def create_initial_vote 
       votes.create :user => user
