@@ -1,6 +1,6 @@
 <%= div_for(restaurant) do %>
   <tr>
-	<td class='big'><%= restaurant.votes.size %></td>
+	<td class='big'><%= restaurant.votes.count %></td>
 	<td><b><%= link_to (restaurant.name), restaurant %></b></td>
     <td><%= restaurant.description %></td>
 	<td><%= restaurant.neighborhood %>

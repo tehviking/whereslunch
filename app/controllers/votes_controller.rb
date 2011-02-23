@@ -4,7 +4,6 @@ class VotesController < ApplicationController
   def create
     @restaurant = Restaurant.find(params[:restaurant_id])
     @restaurant.votes.create(:user => current_user)
-    @restaurant.user.decrement_votes_left
     
     respond_to do |format| 
       format.html { redirect_to @restaurant } 
